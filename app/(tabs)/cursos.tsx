@@ -65,27 +65,37 @@ const DATA: ItemProps[] = [
   },
 ];
 
-const Course = ({ category, hours, img, stars, title }: ItemProps) => (
-  <View style={styles.course}>
-    <View style={styles.course_preview}>
-      <Text>.</Text>
-    </View>
-    <View style={styles.course_specs}>
-      <Text style={styles.course_specs_category}>{category}</Text>
-      <Text style={styles.course_specs_title}>{title}</Text>
-      <View style={styles.course_specs_flex}>
-        <Text>{stars}</Text>
-        <Text>Avaliação: {hours}</Text>
+const Course = ({ category, hours, img, stars, title }: ItemProps) => {
+  const router = useRouter();
+
+  return (
+    <View style={styles.course}>
+      <View style={styles.course_preview}>
+        <Text>.</Text>
+      </View>
+      <View style={styles.course_specs}>
+        <Text style={styles.course_specs_category}>{category}</Text>
+        <Text style={styles.course_specs_title}>{title}</Text>
+        <View style={styles.course_specs_flex}>
+          <Text>{stars}</Text>
+          <Text>Avaliação: {hours}</Text>
+        </View>
+
+        <View style={styles.course_specs_flex}>
+          <TouchableOpacity onPress={() => router.push("/curso")}>
+            <Text style={styles.certification}>Ver Certificado</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => router.push("/curso")}>
+            <Text style={styles.contet}>Ver Conteudo</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
-  </View>
-);
+  );
+};
 
-export default function HomeScreen({
-  navigation,
-}: {
-  navigation: NavigationProp<any>;
-}) {
+export default function CursosScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
 
@@ -101,32 +111,32 @@ export default function HomeScreen({
       <View style={styles.container}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.header_title}>Oi, André</Text>
+            <Text style={styles.header_title}>Meus cursos</Text>
             <Text style={styles.header_text}>
-              O que você gostaria de aprender hoje?
+              Veja seus cursos e continue de onde parou
             </Text>
           </View>
           <View>
-            <Ionicons size={28} name="notifications" color={"#167F71"} />
+            {/* <Ionicons size={28} name="notifications" color={"#167F71"} /> */}
           </View>
         </View>
 
         <View style={styles.courses_container}>
-          <Text style={styles.courses_header}>Cursos:</Text>
+          {/* <Text style={styles.courses_header}>Cursos:</Text> */}
 
           <FlatList
             data={DATA}
             renderItem={({ item }: { item: ItemProps }) => (
-              <TouchableOpacity onPress={() => router.push("/curso")}>
-                <Course
-                  id=""
-                  img=""
-                  hours={item.hours}
-                  stars={item.stars}
-                  category={item.category}
-                  title={item.title}
-                />
-              </TouchableOpacity>
+              // <TouchableOpacity onPress={() => router.push("/curso")}>
+              <Course
+                id=""
+                img=""
+                hours={item.hours}
+                stars={item.stars}
+                category={item.category}
+                title={item.title}
+              />
+              // </TouchableOpacity>
             )}
             keyExtractor={(item) => item.id}
           />
@@ -157,7 +167,7 @@ const styles = StyleSheet.create({
     color: "#54545490",
   },
   courses_container: {
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 30,
   },
   courses_header: {
@@ -200,5 +210,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 5,
     gap: 10,
+  },
+  certification: {
+    marginTop: 10,
+    color: "#0961F5",
+  },
+  contet: {
+    marginTop: 10,
+    color: "#167F71",
   },
 });

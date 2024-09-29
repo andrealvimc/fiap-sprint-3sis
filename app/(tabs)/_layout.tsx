@@ -28,9 +28,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="test"
+        name="cursos"
         options={{
-          title: "Cursos",
+          title: "Meus Cursos",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "journal" : "journal-outline"}
@@ -39,6 +39,7 @@ export default function TabLayout() {
           ),
         }}
       />
+
       {/* <Tabs.Screen
         name="explore"
         options={{
