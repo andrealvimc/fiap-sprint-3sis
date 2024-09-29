@@ -82,7 +82,7 @@ const Course = ({ category, hours, img, stars, title }: ItemProps) => {
         </View>
 
         <View style={styles.course_specs_flex}>
-          <TouchableOpacity onPress={() => router.push("/curso")}>
+          <TouchableOpacity onPress={() => router.push("/certificado")}>
             <Text style={styles.certification}>Ver Certificado</Text>
           </TouchableOpacity>
 

@@ -10,7 +10,6 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import YoutubePlayer from "react-native-youtube-iframe";
 
 import { Collapsible } from "@/components/Collapsible";
 import { ExternalLink } from "@/components/ExternalLink";
@@ -49,14 +48,14 @@ export default function CursoScreen() {
           </View>
 
           <View style={styles.video_container}>
-            {/* <Ionicons size={28} name="play" color={"#fff"} /> */}
+            <Ionicons size={28} name="play" color={"#fff"} />
 
-            <YoutubePlayer
+            {/* <YoutubePlayer
               height={250}
               play={playing}
               videoId={"fUJoAXUb-UY"}
               onChangeState={onStateChange}
-            />
+            /> */}
             {/* <Button
               title={playing ? "pause" : "play"}
               onPress={togglePlaying}
